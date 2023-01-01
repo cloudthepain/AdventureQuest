@@ -6,8 +6,8 @@ namespace AdventureQuest.Dice
 {
 	public class Die
 	{
-		public int LastRolled;
-		public int Sides;
+		public int Sides { get; }
+		public int LastRolled { get; private set; }
 		public Die(int sides)
 		{
 			if(sides < 2)
