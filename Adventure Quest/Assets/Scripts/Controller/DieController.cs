@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace AdventureQuest.Dice
 {
 	public class DieController : MonoBehaviour
 	{
+		[field: SerializeField]
+		public UnityEvent<string> OnRollString { get; private set; }
 		[field: SerializeField]
 		public int Sides { get; private set; } = 6;
 		private Die _die;
@@ -17,6 +20,7 @@ namespace AdventureQuest.Dice
 		public void Roll()
 		{
 			_die.Roll();
+			OnRollString.Invoke(_die.LastRolled.ToString());
 			Debug.Log($"Rolled a {_die.LastRolled}");
 		}
 	}
